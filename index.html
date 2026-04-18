@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>অক্ষরযাত্রা প্রকাশন</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Noto Serif Bengali', serif;
+    background: #faf8f2;
+    color: #222;
+    line-height: 1.8;
+}
+
+/* NAVBAR */
+
+nav {
+    background: #ffffff;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 35px;
+    border-bottom: 1px solid #ddd;
+    position: sticky;
+    top: 0;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #8b0000;
+}
+
+/* HERO */
+
+.hero {
+    text-align: center;
+    padding: 100px 20px;
+    background: #fffdf8;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+}
+
+.hero .tagline {
+    font-size: 1.3rem;
+    color: #8b0000;
+    margin-bottom: 25px;
+    font-weight: 600;
+}
+
+.hero p {
+    max-width: 750px;
+    margin: auto;
+    font-size: 1.1rem;
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 35px;
+    padding: 14px 30px;
+    background: #8b0000;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #5f0000;
+}
+
+/* SECTION */
+
+.section {
+    max-width: 1100px;
+    margin: 90px auto;
+    padding: 0 20px;
+}
+
+.section h2 {
+    text-align: center;
+    font-size: 2.2rem;
+    margin-bottom: 40px;
+}
+
+/* BOOK GRID */
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.card {
+    background: white;
+    padding: 28px;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+}
+
+.card h3 {
+    margin-bottom: 15px;
+    color: #8b0000;
+}
+
+.card p {
+    margin-bottom: 10px;
+}
+
+/* CONTACT */
+
+.contact-box {
+    text-align: center;
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    max-width: 800px;
+    margin: auto;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+}
+
+/* FOOTER */
+
+footer {
+    text-align: center;
+    padding: 40px;
+    background: white;
+    border-top: 1px solid #ddd;
+    color: #666;
+}
+
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+
+<nav>
+    <a href="#home">প্রচ্ছদ</a>
+    <a href="#about">আমাদের কথা</a>
+    <a href="#books">বইসমূহ</a>
+    <a href="#authors">লেখক</a>
+    <a href="#submit">পাণ্ডুলিপি</a>
+    <a href="#contact">যোগাযোগ</a>
+</nav>
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+    <h1>অক্ষরযাত্রা প্রকাশন</h1>
+
+    <div class="tagline">
+        এসো অক্ষরযাত্রায় পার হই এক অক্ষর-পারাবার
+    </div>
+
+    <p>
+        সাহিত্য শুধু মুদ্রিত কাগজ নয়—এ এক যাত্রা, স্মৃতি, ইতিহাস ও ভবিষ্যতের সেতুবন্ধন।
+        অক্ষরযাত্রা প্রকাশন বাংলা সাহিত্য, গবেষণা, কবিতা, গল্প, উপন্যাস ও মননশীল রচনার
+        বিশ্বস্ত প্রকাশভূমি।
+    </p>
+
+    <a href="#books" class="btn">আমাদের বই দেখুন</a>
+</section>
+
+<!-- ABOUT -->
+
+<section class="section" id="about">
+    <h2>আমাদের পরিচয়</h2>
+
+    <p style="text-align:center; max-width:850px; margin:auto;">
+        অক্ষরযাত্রা প্রকাশন নতুন ও প্রতিষ্ঠিত লেখকদের জন্য এক সৃজনশীল ও নির্ভরযোগ্য
+        প্রকাশনার পরিসর নির্মাণ করে। আমাদের লক্ষ্য শুধু বই প্রকাশ নয়, পাঠক ও লেখকের
+        মধ্যে এক দীর্ঘস্থায়ী সাহিত্যিক সম্পর্ক তৈরি করা।
+    </p>
+</section>
+
+<!-- BOOKS -->
+
+<section class="section" id="books">
+    <h2>নির্বাচিত প্রকাশনা</h2>
+
+    <div class="grid">
+
+        <div class="card">
+            <h3>টুসুপুরাণ</h3>
+            <p><strong>লেখক:</strong> জহরলাল মাহাত</p>
+            <p><strong>মূল্য:</strong> ₹১৫০</p>
+            <p>লোকসংস্কৃতি, স্মৃতি ও সমাজচেতনার গভীর পাঠ।</p>
+        </div>
+
+        <div class="card">
+            <h3>গামছা চরিতকথা</h3>
+            <p><strong>লেখক:</strong> শফিকুল কবীর চন্দন</p>
+            <p><strong>মূল্য:</strong> ₹৪৩০</p>
+            <p>এক সাধারণ বস্তু থেকে সমাজ-সংস্কৃতির অসাধারণ পাঠ।</p>
+        </div>
+
+        <div class="card">
+            <h3>অদ্বৈত মল্লবর্মণ: জীবনের আখ্যান</h3>
+            <p><strong>লেখক:</strong> তপোধীর ভট্টাচার্য</p>
+            <p><strong>মূল্য:</strong> ₹২৫০</p>
+            <p>জীবন, সাহিত্য ও সময়ের গভীর অনুসন্ধান।</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- AUTHORS -->
+
+<section class="section" id="authors">
+    <h2>আমাদের লেখক</h2>
+
+    <p style="text-align:center; max-width:800px; margin:auto;">
+        প্রতিষ্ঠিত ও নবীন—উভয় ধারার লেখকদের সঙ্গে আমরা কাজ করি।
+        আমাদের কাছে সাহিত্য মানে সংলাপ, বিনিময় ও দীর্ঘ যাত্রা।
+    </p>
+</section>
+
+<!-- SUBMISSION -->
+
+<section class="section" id="submit">
+    <h2>পাণ্ডুলিপি জমা</h2>
+
+    <p style="text-align:center; max-width:800px; margin:auto;">
+        কবিতা, গল্প, উপন্যাস, গবেষণা, সমালোচনা বা অন্য কোনো মননশীল রচনার
+        পাণ্ডুলিপি জমা দিতে চাইলে আমাদের ইমেইলে পাঠাতে পারেন।
+        নির্বাচিত পাণ্ডুলিপির জন্য সম্পাদকীয় বোর্ড যোগাযোগ করবে।
+    </p>
+</section>
+
+<!-- CONTACT -->
+
+<section class="section" id="contact">
+    <h2>যোগাযোগ</h2>
+
+    <div class="contact-box">
+        <p><strong>অবস্থান:</strong> Hind Motor</p>
+        <p><strong>Facebook:</strong> অক্ষরযাত্রা প্রকাশন</p>
+        <p><strong>বই সংগ্রহ:</strong> কলেজ স্ট্রিট ও অনলাইন ডেলিভারি উপলব্ধ</p>
+        <p><strong>যোগাযোগ নম্বর:</strong> 8777476910 / 9330915587</p>
+        <p><strong>Email:</strong> yourmail@example.com</p>
+    </div>
+</section>
+
+<footer>
+    © 2026 অক্ষরযাত্রা প্রকাশন | সকল স্বত্ব সংরক্ষিত
+</footer>
+
+</body>
+</html>
