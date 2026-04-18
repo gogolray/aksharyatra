@@ -15,21 +15,55 @@
     box-sizing:border-box;
 }
 
+html{
+    scroll-behavior:smooth;
+}
+
 body{
     font-family:'Noto Serif Bengali', serif;
-    background:#faf8f2;
     color:#222;
     line-height:1.8;
+    position:relative;
+    background:#f8f4ec;
+    overflow-x:hidden;
+}
+
+/* BACKGROUND SLIDESHOW */
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    animation:bgSlide 40s infinite;
+    opacity:0.08;
+    z-index:-2;
+}
+
+@keyframes bgSlide{
+    0%   { background-image:url("book1.jpeg"); }
+    10%  { background-image:url("book5.jpeg"); }
+    20%  { background-image:url("book10.jpeg"); }
+    30%  { background-image:url("book15.jpeg"); }
+    40%  { background-image:url("book20.jpeg"); }
+    50%  { background-image:url("book25.jpeg"); }
+    60%  { background-image:url("book30.jpeg"); }
+    70%  { background-image:url("book35.jpeg"); }
+    80%  { background-image:url("book40.jpeg"); }
+    100% { background-image:url("book1.jpeg"); }
 }
 
 /* NAVBAR */
 
 nav{
-    background:#fff;
-    padding:18px;
+    background:rgba(255,255,255,0.95);
+    backdrop-filter:blur(8px);
+    padding:18px 20px;
     display:flex;
     justify-content:center;
-    gap:30px;
+    gap:32px;
     flex-wrap:wrap;
     border-bottom:1px solid #ddd;
     position:sticky;
@@ -41,6 +75,7 @@ nav a{
     text-decoration:none;
     color:#333;
     font-weight:600;
+    transition:.3s;
 }
 
 nav a:hover{
@@ -51,8 +86,8 @@ nav a:hover{
 
 .hero{
     text-align:center;
-    padding:80px 20px;
-    background:#fffdf8;
+    padding:90px 20px 60px;
+    background:rgba(255,253,248,0.85);
 }
 
 .logo{
@@ -61,36 +96,87 @@ nav a:hover{
 }
 
 .hero h1{
-    font-size:3rem;
+    font-size:3.2rem;
     margin-bottom:15px;
 }
 
 .tagline{
     color:#8b0000;
-    font-weight:700;
     font-size:1.2rem;
-    margin-bottom:20px;
+    font-weight:700;
+    margin-bottom:22px;
 }
 
 .hero p{
     max-width:850px;
     margin:auto;
+    font-size:1.05rem;
 }
 
 .btn{
     display:inline-block;
-    margin:10px;
-    margin-top:30px;
+    margin:12px 8px;
     padding:14px 28px;
     background:#8b0000;
-    color:white;
+    color:#fff;
     text-decoration:none;
     border-radius:8px;
     font-weight:600;
+    transition:.3s;
 }
 
 .btn:hover{
     background:#5f0000;
+}
+
+/* FRONT SWIPEABLE SLIDESHOW */
+
+.featured-slider{
+    max-width:1100px;
+    margin:60px auto 20px;
+    padding:0 20px;
+}
+
+.featured-slider h2{
+    text-align:center;
+    margin-bottom:30px;
+    font-size:2rem;
+}
+
+.swiper{
+    display:flex;
+    gap:20px;
+    overflow-x:auto;
+    scroll-snap-type:x mandatory;
+    scroll-behavior:smooth;
+    padding-bottom:20px;
+}
+
+.swiper::-webkit-scrollbar{
+    height:8px;
+}
+
+.swiper::-webkit-scrollbar-thumb{
+    background:#bbb;
+    border-radius:20px;
+}
+
+.slide{
+    min-width:280px;
+    flex:0 0 auto;
+    scroll-snap-align:center;
+    background:white;
+    border-radius:16px;
+    padding:14px;
+    box-shadow:0 8px 25px rgba(0,0,0,0.06);
+}
+
+.slide img{
+    width:100%;
+    height:420px;
+    object-fit:contain;
+    border-radius:12px;
+    background:#fff;
 }
 
 /* SECTION */
@@ -103,103 +189,93 @@ nav a:hover{
 
 .section h2{
     text-align:center;
-    margin-bottom:40px;
     font-size:2rem;
+    margin-bottom:40px;
 }
 
-/* SLIDESHOW */
-
-.slider{
-    width:100%;
-    overflow:hidden;
-    background:white;
-    padding:30px 0;
-}
-
-.slide-track{
-    display:flex;
-    width:calc(250px * 20);
-    animation:scroll 40s linear infinite;
-}
-
-.slide{
-    width:220px;
-    margin:0 15px;
-    flex-shrink:0;
-}
-
-.slide img{
-    width:100%;
-    height:320px;
-    object-fit:cover;
-    border-radius:12px;
-    box-shadow:0 8px 20px rgba(0,0,0,0.08);
-}
-
-@keyframes scroll{
-    0%{
-        transform:translateX(0);
-    }
-    100%{
-        transform:translateX(calc(-235px * 10));
-    }
-}
-
-/* GALLERY */
+/* ALL BOOK GRID */
 
 .grid{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-    gap:25px;
+    gap:24px;
 }
 
-.book-cover{
-    background:white;
+.book{
+    background:rgba(255,255,255,0.95);
+    border-radius:14px;
     padding:12px;
-    border-radius:12px;
     box-shadow:0 6px 18px rgba(0,0,0,0.05);
+    transition:.3s;
 }
 
-.book-cover img{
+.book:hover{
+    transform:translateY(-4px);
+}
+
+.book img{
     width:100%;
     height:300px;
-    object-fit:cover;
-    border-radius:8px;
+    object-fit:contain;
+    border-radius:10px;
+    background:white;
 }
 
 /* INFO BOX */
 
 .info-box{
-    background:white;
+    background:rgba(255,255,255,0.95);
     padding:40px;
-    border-radius:14px;
+    border-radius:16px;
     box-shadow:0 8px 25px rgba(0,0,0,0.05);
-    text-align:center;
     max-width:900px;
     margin:auto;
+    text-align:center;
 }
 
 /* FOOTER */
 
 footer{
+    background:rgba(255,255,255,0.95);
     text-align:center;
     padding:40px;
-    background:white;
     border-top:1px solid #ddd;
     color:#666;
+    margin-top:80px;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+    .hero h1{
+        font-size:2.3rem;
+    }
+
+    .slide{
+        min-width:220px;
+    }
+
+    .slide img{
+        height:320px;
+    }
 }
 </style>
 </head>
 
 <body>
 
+<!-- NAVBAR -->
+
 <nav>
     <a href="#home">প্রচ্ছদ</a>
+    <a href="#featured">নির্বাচিত বই</a>
     <a href="#books">বইসমূহ</a>
     <a href="catalogue.pdf" target="_blank">ক্যাটালগ PDF</a>
     <a href="#stores">প্রাপ্তিস্থান</a>
     <a href="#contact">যোগাযোগ</a>
 </nav>
+
+<!-- HERO -->
 
 <section class="hero" id="home">
 
@@ -212,40 +288,41 @@ footer{
     </div>
 
     <p>
-        সাহিত্য শুধু বই নয়—এ এক যাত্রা।
-        স্মৃতি, সমাজ, ইতিহাস ও ভবিষ্যতের সঙ্গে
-        পাঠকের গভীর সংলাপ।
-        অক্ষরযাত্রা প্রকাশন বাংলা সাহিত্য ও মননশীল রচনার
-        এক বিশ্বস্ত প্রকাশভূমি।
+        সাহিত্য শুধু বই নয়—এ এক যাত্রা। স্মৃতি, সমাজ, ইতিহাস,
+        লোকসংস্কৃতি এবং ভবিষ্যতের সঙ্গে পাঠকের গভীর সংলাপ।
+        অক্ষরযাত্রা প্রকাশন বাংলা সাহিত্য, গবেষণা, কবিতা, ছোটগল্প,
+        উপন্যাস ও মননশীল রচনার এক বিশ্বস্ত প্রকাশভূমি।
     </p>
 
-    <a href="#books" class="btn">বই দেখুন</a>
+    <a href="#featured" class="btn">বই দেখুন</a>
     <a href="catalogue.pdf" target="_blank" class="btn">সম্পূর্ণ ক্যাটালগ</a>
 
 </section>
 
-<section class="section">
+<!-- FRONT SWIPEABLE FEATURED SLIDER -->
+
+<section class="featured-slider" id="featured">
 
     <h2>নির্বাচিত প্রচ্ছদ</h2>
 
-    <div class="slider">
-        <div class="slide-track">
+    <div class="swiper">
 
-            <div class="slide"><img src="book1.jpeg"></div>
-            <div class="slide"><img src="book2.jpeg"></div>
-            <div class="slide"><img src="book3.jpeg"></div>
-            <div class="slide"><img src="book4.jpeg"></div>
-            <div class="slide"><img src="book5.jpeg"></div>
-            <div class="slide"><img src="book6.jpeg"></div>
-            <div class="slide"><img src="book7.jpeg"></div>
-            <div class="slide"><img src="book8.jpeg"></div>
-            <div class="slide"><img src="book9.jpeg"></div>
-            <div class="slide"><img src="book10.jpeg"></div>
+        <div class="slide"><img src="book1.jpeg" alt=""></div>
+        <div class="slide"><img src="book2.jpeg" alt=""></div>
+        <div class="slide"><img src="book3.jpeg" alt=""></div>
+        <div class="slide"><img src="book4.jpeg" alt=""></div>
+        <div class="slide"><img src="book5.jpeg" alt=""></div>
+        <div class="slide"><img src="book6.jpeg" alt=""></div>
+        <div class="slide"><img src="book7.jpeg" alt=""></div>
+        <div class="slide"><img src="book8.jpeg" alt=""></div>
+        <div class="slide"><img src="book9.jpeg" alt=""></div>
+        <div class="slide"><img src="book10.jpeg" alt=""></div>
 
-        </div>
     </div>
 
 </section>
+
+<!-- ALL 40 BOOK COVERS -->
 
 <section class="section" id="books">
 
@@ -253,22 +330,55 @@ footer{
 
     <div class="grid">
 
-        <div class="book-cover"><img src="book1.jpeg"></div>
-        <div class="book-cover"><img src="book2.jpeg"></div>
-        <div class="book-cover"><img src="book3.jpeg"></div>
-        <div class="book-cover"><img src="book4.jpeg"></div>
-        <div class="book-cover"><img src="book5.jpeg"></div>
-        <div class="book-cover"><img src="book6.jpeg"></div>
-        <div class="book-cover"><img src="book7.jpeg"></div>
-        <div class="book-cover"><img src="book8.jpeg"></div>
-        <div class="book-cover"><img src="book9.jpeg"></div>
-        <div class="book-cover"><img src="book10.jpeg"></div>
-        <div class="book-cover"><img src="book11.jpeg"></div>
-        <div class="book-cover"><img src="book12.jpeg"></div>
+        <div class="book"><img src="book1.jpeg" alt=""></div>
+        <div class="book"><img src="book2.jpeg" alt=""></div>
+        <div class="book"><img src="book3.jpeg" alt=""></div>
+        <div class="book"><img src="book4.jpeg" alt=""></div>
+        <div class="book"><img src="book5.jpeg" alt=""></div>
+        <div class="book"><img src="book6.jpeg" alt=""></div>
+        <div class="book"><img src="book7.jpeg" alt=""></div>
+        <div class="book"><img src="book8.jpeg" alt=""></div>
+        <div class="book"><img src="book9.jpeg" alt=""></div>
+        <div class="book"><img src="book10.jpeg" alt=""></div>
+
+        <div class="book"><img src="book11.jpeg" alt=""></div>
+        <div class="book"><img src="book12.jpeg" alt=""></div>
+        <div class="book"><img src="book13.jpeg" alt=""></div>
+        <div class="book"><img src="book14.jpeg" alt=""></div>
+        <div class="book"><img src="book15.jpeg" alt=""></div>
+        <div class="book"><img src="book16.jpeg" alt=""></div>
+        <div class="book"><img src="book17.jpeg" alt=""></div>
+        <div class="book"><img src="book18.jpeg" alt=""></div>
+        <div class="book"><img src="book19.jpeg" alt=""></div>
+        <div class="book"><img src="book20.jpeg" alt=""></div>
+
+        <div class="book"><img src="book21.jpeg" alt=""></div>
+        <div class="book"><img src="book22.jpeg" alt=""></div>
+        <div class="book"><img src="book23.jpeg" alt=""></div>
+        <div class="book"><img src="book24.jpeg" alt=""></div>
+        <div class="book"><img src="book25.jpeg" alt=""></div>
+        <div class="book"><img src="book26.jpeg" alt=""></div>
+        <div class="book"><img src="book27.jpeg" alt=""></div>
+        <div class="book"><img src="book28.jpeg" alt=""></div>
+        <div class="book"><img src="book29.jpeg" alt=""></div>
+        <div class="book"><img src="book30.jpeg" alt=""></div>
+
+        <div class="book"><img src="book31.jpeg" alt=""></div>
+        <div class="book"><img src="book32.jpeg" alt=""></div>
+        <div class="book"><img src="book33.jpeg" alt=""></div>
+        <div class="book"><img src="book34.jpeg" alt=""></div>
+        <div class="book"><img src="book35.jpeg" alt=""></div>
+        <div class="book"><img src="book36.jpeg" alt=""></div>
+        <div class="book"><img src="book37.jpeg" alt=""></div>
+        <div class="book"><img src="book38.jpeg" alt=""></div>
+        <div class="book"><img src="book39.jpeg" alt=""></div>
+        <div class="book"><img src="book40.jpeg" alt=""></div>
 
     </div>
 
 </section>
+
+<!-- STORES -->
 
 <section class="section" id="stores">
 
@@ -278,11 +388,15 @@ footer{
         <p>◉ ধ্যানবিন্দু — 8777476910</p>
         <p>◉ লালন — 9330915587</p>
         <p>◉ গীতা বুকস্টল — 9434626346</p>
+        <p>◉ পাপাঙ্গুলের ঘর — 6289066429</p>
+        <p>◉ প্লাটফর্ম — 7980038280</p>
         <p>◉ বহুবচন — 7044428635</p>
         <p>◉ বইপিয়োন — boipeon.com</p>
     </div>
 
 </section>
+
+<!-- CONTACT -->
 
 <section class="section" id="contact">
 
@@ -292,12 +406,13 @@ footer{
         <p><strong>Facebook:</strong> অক্ষরযাত্রা প্রকাশন</p>
         <p><strong>হোয়াটসঅ্যাপ অর্ডার:</strong> 9474907307</p>
         <p><strong>বিশেষ অনুরোধ:</strong> ফোন নয়, হোয়াটসঅ্যাপ করুন</p>
+        <p><strong>কলেজ স্ট্রিট ও অনলাইন ডেলিভারি উপলব্ধ</strong></p>
     </div>
 
 </section>
 
 <footer>
-    © 2026 অক্ষরযাত্রা প্রকাশন
+    © 2026 অক্ষরযাত্রা প্রকাশন | সকল স্বত্ব সংরক্ষিত
 </footer>
 
 </body>
