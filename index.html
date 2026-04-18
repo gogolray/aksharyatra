@@ -78,15 +78,19 @@ nav a:hover {
     font-size: 1.08rem;
 }
 
+.button-group {
+    margin-top: 35px;
+}
+
 .btn {
     display: inline-block;
-    margin-top: 35px;
-    padding: 14px 30px;
+    padding: 14px 28px;
     background: #8b0000;
     color: white;
     text-decoration: none;
     border-radius: 8px;
     font-weight: 600;
+    margin: 8px;
     transition: 0.3s;
 }
 
@@ -179,17 +183,19 @@ footer {
 <nav>
     <a href="#home">প্রচ্ছদ</a>
     <a href="#about">আমাদের কথা</a>
-    <a href="#books">বইসমূহ</a>
+
+    <!-- PDF Catalogue -->
+    <a href="catalogue.pdf" target="_blank">বইসমূহ</a>
+
     <a href="#stores">প্রাপ্তিস্থান</a>
     <a href="#submit">পাণ্ডুলিপি</a>
     <a href="#contact">যোগাযোগ</a>
 </nav>
 
-<!-- HERO SECTION -->
+<!-- HERO -->
 
 <section class="hero" id="home">
 
-    <!-- Logo -->
     <img src="logo.png" alt="অক্ষরযাত্রা প্রকাশন" class="logo">
 
     <h1>অক্ষরযাত্রা প্রকাশন</h1>
@@ -205,7 +211,19 @@ footer {
         লোকঐতিহ্য ও মননশীল রচনার এক বিশ্বস্ত প্রকাশভূমি।
     </p>
 
-    <a href="#books" class="btn">আমাদের বই দেখুন</a>
+    <!-- TWO BUTTONS -->
+
+    <div class="button-group">
+
+        <a href="#books" class="btn">
+            নির্বাচিত বইসমূহ
+        </a>
+
+        <a href="catalogue.pdf" target="_blank" class="btn">
+            সম্পূর্ণ ক্যাটালগ PDF
+        </a>
+
+    </div>
 
 </section>
 
@@ -226,7 +244,7 @@ footer {
 
 </section>
 
-<!-- BOOKS -->
+<!-- FEATURED BOOKS -->
 
 <section class="section" id="books">
 
@@ -338,8 +356,6 @@ footer {
     </div>
 
 </section>
-
-<!-- FOOTER -->
 
 <footer>
     © 2026 অক্ষরযাত্রা প্রকাশন | সকল স্বত্ব সংরক্ষিত
