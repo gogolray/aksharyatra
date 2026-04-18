@@ -25,23 +25,22 @@ body{
 /* NAVBAR */
 
 nav{
-    background:#ffffff;
-    padding:18px 20px;
+    background:#fff;
+    padding:18px;
     display:flex;
     justify-content:center;
-    gap:35px;
+    gap:30px;
+    flex-wrap:wrap;
     border-bottom:1px solid #ddd;
     position:sticky;
     top:0;
     z-index:1000;
-    flex-wrap:wrap;
 }
 
 nav a{
     text-decoration:none;
     color:#333;
     font-weight:600;
-    transition:0.3s;
 }
 
 nav a:hover{
@@ -51,9 +50,9 @@ nav a:hover{
 /* HERO */
 
 .hero{
-    background:#fffdf8;
-    padding:90px 20px;
     text-align:center;
+    padding:80px 20px;
+    background:#fffdf8;
 }
 
 .logo{
@@ -62,95 +61,110 @@ nav a:hover{
 }
 
 .hero h1{
-    font-size:3.2rem;
+    font-size:3rem;
     margin-bottom:15px;
 }
 
 .tagline{
     color:#8b0000;
-    font-size:1.2rem;
     font-weight:700;
-    margin-bottom:25px;
+    font-size:1.2rem;
+    margin-bottom:20px;
 }
 
 .hero p{
     max-width:850px;
     margin:auto;
-    font-size:1.08rem;
-}
-
-.button-group{
-    margin-top:35px;
 }
 
 .btn{
     display:inline-block;
+    margin:10px;
+    margin-top:30px;
     padding:14px 28px;
     background:#8b0000;
     color:white;
     text-decoration:none;
     border-radius:8px;
     font-weight:600;
-    margin:8px;
-    transition:0.3s;
 }
 
 .btn:hover{
     background:#5f0000;
 }
 
-/* SECTIONS */
+/* SECTION */
 
 .section{
     max-width:1200px;
-    margin:90px auto;
+    margin:80px auto;
     padding:0 20px;
 }
 
 .section h2{
     text-align:center;
-    font-size:2.2rem;
     margin-bottom:40px;
+    font-size:2rem;
 }
 
-/* BOOK GRID */
+/* SLIDESHOW */
+
+.slider{
+    width:100%;
+    overflow:hidden;
+    background:white;
+    padding:30px 0;
+}
+
+.slide-track{
+    display:flex;
+    width:calc(250px * 20);
+    animation:scroll 40s linear infinite;
+}
+
+.slide{
+    width:220px;
+    margin:0 15px;
+    flex-shrink:0;
+}
+
+.slide img{
+    width:100%;
+    height:320px;
+    object-fit:cover;
+    border-radius:12px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.08);
+}
+
+@keyframes scroll{
+    0%{
+        transform:translateX(0);
+    }
+    100%{
+        transform:translateX(calc(-235px * 10));
+    }
+}
+
+/* GALLERY */
 
 .grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:30px;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:25px;
 }
 
-.book-card{
+.book-cover{
     background:white;
-    border-radius:14px;
-    overflow:hidden;
-    box-shadow:0 8px 25px rgba(0,0,0,0.05);
-    transition:0.3s;
+    padding:12px;
+    border-radius:12px;
+    box-shadow:0 6px 18px rgba(0,0,0,0.05);
 }
 
-.book-card:hover{
-    transform:translateY(-5px);
-}
-
-.book-card img{
+.book-cover img{
     width:100%;
-    height:380px;
+    height:300px;
     object-fit:cover;
-}
-
-.book-content{
-    padding:22px;
-}
-
-.book-content h3{
-    color:#8b0000;
-    margin-bottom:12px;
-    font-size:1.1rem;
-}
-
-.book-content p{
-    margin-bottom:8px;
+    border-radius:8px;
 }
 
 /* INFO BOX */
@@ -160,17 +174,17 @@ nav a:hover{
     padding:40px;
     border-radius:14px;
     box-shadow:0 8px 25px rgba(0,0,0,0.05);
+    text-align:center;
     max-width:900px;
     margin:auto;
-    text-align:center;
 }
 
 /* FOOTER */
 
 footer{
-    background:white;
     text-align:center;
     padding:40px;
+    background:white;
     border-top:1px solid #ddd;
     color:#666;
 }
@@ -179,22 +193,16 @@ footer{
 
 <body>
 
-<!-- NAVBAR -->
-
 <nav>
     <a href="#home">প্রচ্ছদ</a>
-    <a href="#about">আমাদের কথা</a>
-    <a href="catalogue.pdf" target="_blank">বইসমূহ</a>
+    <a href="#books">বইসমূহ</a>
+    <a href="catalogue.pdf" target="_blank">ক্যাটালগ PDF</a>
     <a href="#stores">প্রাপ্তিস্থান</a>
-    <a href="#submit">পাণ্ডুলিপি</a>
     <a href="#contact">যোগাযোগ</a>
 </nav>
 
-<!-- HERO -->
-
 <section class="hero" id="home">
 
-    <!-- upload your logo as logo.png -->
     <img src="logo.png" alt="অক্ষরযাত্রা প্রকাশন" class="logo">
 
     <h1>অক্ষরযাত্রা প্রকাশন</h1>
@@ -204,130 +212,63 @@ footer{
     </div>
 
     <p>
-        সাহিত্য শুধু বই নয়—এ এক যাত্রা। স্মৃতি, ইতিহাস, সমাজ,
-        লোকসংস্কৃতি এবং ভবিষ্যতের সঙ্গে পাঠকের গভীর সংলাপ।
-        অক্ষরযাত্রা প্রকাশন বাংলা সাহিত্য, গবেষণা, কবিতা, ছোটগল্প,
-        উপন্যাস, লোকঐতিহ্য ও মননশীল রচনার এক বিশ্বস্ত প্রকাশভূমি।
+        সাহিত্য শুধু বই নয়—এ এক যাত্রা।
+        স্মৃতি, সমাজ, ইতিহাস ও ভবিষ্যতের সঙ্গে
+        পাঠকের গভীর সংলাপ।
+        অক্ষরযাত্রা প্রকাশন বাংলা সাহিত্য ও মননশীল রচনার
+        এক বিশ্বস্ত প্রকাশভূমি।
     </p>
 
-    <div class="button-group">
-        <a href="#books" class="btn">নির্বাচিত বইসমূহ</a>
-        <a href="catalogue.pdf" target="_blank" class="btn">সম্পূর্ণ ক্যাটালগ PDF</a>
-    </div>
+    <a href="#books" class="btn">বই দেখুন</a>
+    <a href="catalogue.pdf" target="_blank" class="btn">সম্পূর্ণ ক্যাটালগ</a>
 
 </section>
 
-<!-- ABOUT -->
+<section class="section">
 
-<section class="section" id="about">
+    <h2>নির্বাচিত প্রচ্ছদ</h2>
 
-    <h2>আমাদের পরিচয়</h2>
+    <div class="slider">
+        <div class="slide-track">
 
-    <div class="info-box">
-        <p>
-            নতুন ও প্রতিষ্ঠিত লেখকদের জন্য আমরা নির্মাণ করি একটি
-            সৃজনশীল ও নির্ভরযোগ্য প্রকাশনার পরিসর। আমাদের লক্ষ্য
-            শুধু বই প্রকাশ নয়—পাঠক, লেখক ও সমাজের মধ্যে
-            দীর্ঘস্থায়ী সাহিত্যিক সম্পর্ক গড়ে তোলা।
-        </p>
+            <div class="slide"><img src="book1.jpeg"></div>
+            <div class="slide"><img src="book2.jpeg"></div>
+            <div class="slide"><img src="book3.jpeg"></div>
+            <div class="slide"><img src="book4.jpeg"></div>
+            <div class="slide"><img src="book5.jpeg"></div>
+            <div class="slide"><img src="book6.jpeg"></div>
+            <div class="slide"><img src="book7.jpeg"></div>
+            <div class="slide"><img src="book8.jpeg"></div>
+            <div class="slide"><img src="book9.jpeg"></div>
+            <div class="slide"><img src="book10.jpeg"></div>
+
+        </div>
     </div>
 
 </section>
-
-<!-- BOOKS -->
 
 <section class="section" id="books">
 
-    <h2>নির্বাচিত প্রকাশনা</h2>
+    <h2>আমাদের বইসমূহ</h2>
 
     <div class="grid">
 
-        <!-- BOOK 1 -->
-        <div class="book-card">
-            <img src="book1.jpeg" alt="টুসুপুরাণ">
-
-            <div class="book-content">
-                <h3>টুসুপুরাণ</h3>
-                <p><strong>লেখক:</strong> জহরলাল মাহাত</p>
-                <p><strong>মূল্য:</strong> ₹১৫০</p>
-                <p>
-                    লোকসংস্কৃতি, স্মৃতি ও সমাজচেতনার গভীর পাঠ।
-                </p>
-            </div>
-        </div>
-
-        <!-- BOOK 2 -->
-        <div class="book-card">
-            <img src="book2.jpeg" alt="গামছা চরিতকথা">
-
-            <div class="book-content">
-                <h3>গামছা চরিতকথা</h3>
-                <p><strong>লেখক:</strong> শফিকুল কবীর চন্দন</p>
-                <p><strong>মূল্য:</strong> ₹৪৩০</p>
-                <p>
-                    এক সাধারণ বস্তুর অসাধারণ সাংস্কৃতিক পাঠ।
-                </p>
-            </div>
-        </div>
-
-        <!-- BOOK 3 -->
-        <div class="book-card">
-            <img src="book3.jpeg" alt="অদ্বৈত মল্লবর্মণ">
-
-            <div class="book-content">
-                <h3>অদ্বৈত মল্লবর্মণ: জীবনের আখ্যান</h3>
-                <p><strong>লেখক:</strong> তপোধীর ভট্টাচার্য</p>
-                <p><strong>মূল্য:</strong> ₹২৫০</p>
-                <p>
-                    জীবন, সাহিত্য ও সময়ের গভীর অনুসন্ধান।
-                </p>
-            </div>
-        </div>
-
-        <!-- BOOK 4 -->
-        <div class="book-card">
-            <img src="book4.jpeg" alt="দীপেন্দু দাসের ছোটগল্প">
-
-            <div class="book-content">
-                <h3>দীপেন্দু দাসের ছোটগল্প</h3>
-                <p><strong>মূল্য:</strong> ₹২৮০</p>
-                <p>
-                    ছোটগল্প গ্রন্থমালার উল্লেখযোগ্য সংযোজন।
-                </p>
-            </div>
-        </div>
-
-        <!-- BOOK 5 -->
-        <div class="book-card">
-            <img src="book5.jpeg" alt="ডালু নৃগোষ্ঠী">
-
-            <div class="book-content">
-                <h3>উত্তর-পূর্ব ভারতে ডালু নৃগোষ্ঠীর সমাজ ও সংস্কৃতি মানচিত্র</h3>
-                <p><strong>মূল্য:</strong> ₹৩৫০</p>
-                <p>
-                    নৃ-ইতিহাস ও সংস্কৃতির গুরুত্বপূর্ণ দলিল।
-                </p>
-            </div>
-        </div>
-
-        <!-- BOOK 6 -->
-        <div class="book-card">
-            <img src="book6.jpeg" alt="সুরভিত স্মৃতি">
-
-            <div class="book-content">
-                <h3>সুরভিত স্মৃতি: সুকুমারী ভট্টাচার্য</h3>
-                <p><strong>মূল্য:</strong> ₹৫০০</p>
-                <p>
-                    স্মৃতি, সাহিত্য ও ব্যক্তিত্বের মূল্যবান সংকলন।
-                </p>
-            </div>
-        </div>
+        <div class="book-cover"><img src="book1.jpeg"></div>
+        <div class="book-cover"><img src="book2.jpeg"></div>
+        <div class="book-cover"><img src="book3.jpeg"></div>
+        <div class="book-cover"><img src="book4.jpeg"></div>
+        <div class="book-cover"><img src="book5.jpeg"></div>
+        <div class="book-cover"><img src="book6.jpeg"></div>
+        <div class="book-cover"><img src="book7.jpeg"></div>
+        <div class="book-cover"><img src="book8.jpeg"></div>
+        <div class="book-cover"><img src="book9.jpeg"></div>
+        <div class="book-cover"><img src="book10.jpeg"></div>
+        <div class="book-cover"><img src="book11.jpeg"></div>
+        <div class="book-cover"><img src="book12.jpeg"></div>
 
     </div>
 
 </section>
-
-<!-- STORES -->
 
 <section class="section" id="stores">
 
@@ -337,36 +278,11 @@ footer{
         <p>◉ ধ্যানবিন্দু — 8777476910</p>
         <p>◉ লালন — 9330915587</p>
         <p>◉ গীতা বুকস্টল — 9434626346</p>
-        <p>◉ পাপাঙ্গুলের ঘর — 6289066429</p>
-        <p>◉ প্লাটফর্ম — 7980038280</p>
         <p>◉ বহুবচন — 7044428635</p>
         <p>◉ বইপিয়োন — boipeon.com</p>
     </div>
 
 </section>
-
-<!-- SUBMISSION -->
-
-<section class="section" id="submit">
-
-    <h2>পাণ্ডুলিপি জমা</h2>
-
-    <div class="info-box">
-        <p>
-            কবিতা, গল্প, উপন্যাস, গবেষণা, সমালোচনা,
-            লোকসংস্কৃতি অথবা অন্য কোনো মননশীল রচনার
-            পাণ্ডুলিপি জমা দিতে চাইলে আমাদের সঙ্গে যোগাযোগ করুন।
-        </p>
-
-        <p style="margin-top:15px;">
-            নির্বাচিত পাণ্ডুলিপির জন্য সম্পাদকীয় বোর্ড
-            সরাসরি যোগাযোগ করবে।
-        </p>
-    </div>
-
-</section>
-
-<!-- CONTACT -->
 
 <section class="section" id="contact">
 
@@ -374,16 +290,14 @@ footer{
 
     <div class="info-box">
         <p><strong>Facebook:</strong> অক্ষরযাত্রা প্রকাশন</p>
-        <p><strong>অবস্থান:</strong> Hind Motor</p>
         <p><strong>হোয়াটসঅ্যাপ অর্ডার:</strong> 9474907307</p>
         <p><strong>বিশেষ অনুরোধ:</strong> ফোন নয়, হোয়াটসঅ্যাপ করুন</p>
-        <p><strong>কলেজ স্ট্রিট ও অনলাইন ডেলিভারি উপলব্ধ</strong></p>
     </div>
 
 </section>
 
 <footer>
-    © 2026 অক্ষরযাত্রা প্রকাশন | সকল স্বত্ব সংরক্ষিত
+    © 2026 অক্ষরযাত্রা প্রকাশন
 </footer>
 
 </body>
