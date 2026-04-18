@@ -26,7 +26,7 @@ body{
 
 nav{
     background:#ffffff;
-    padding:20px;
+    padding:18px 20px;
     display:flex;
     justify-content:center;
     gap:35px;
@@ -50,19 +50,24 @@ nav a:hover{
 /* HERO */
 
 .hero{
-    text-align:center;
-    padding:110px 20px;
     background:#fffdf8;
+    padding:90px 20px;
+    text-align:center;
+}
+
+.logo{
+    width:120px;
+    margin-bottom:20px;
 }
 
 .hero h1{
-    font-size:3.5rem;
-    margin-bottom:20px;
+    font-size:3.2rem;
+    margin-bottom:15px;
 }
 
 .tagline{
     color:#8b0000;
-    font-size:1.3rem;
+    font-size:1.2rem;
     font-weight:700;
     margin-bottom:25px;
 }
@@ -70,7 +75,7 @@ nav a:hover{
 .hero p{
     max-width:800px;
     margin:auto;
-    font-size:1.1rem;
+    font-size:1.08rem;
 }
 
 .btn{
@@ -78,7 +83,7 @@ nav a:hover{
     margin-top:35px;
     padding:14px 30px;
     background:#8b0000;
-    color:white;
+    color:#fff;
     text-decoration:none;
     border-radius:8px;
     font-weight:600;
@@ -89,19 +94,18 @@ nav a:hover{
     background:#5f0000;
 }
 
-/* SECTIONS */
+/* SECTION */
 
 .section{
-    max-width:1100px;
+    max-width:1150px;
     margin:90px auto;
     padding:0 20px;
 }
 
 .section h2{
     text-align:center;
-    font-size:2.2rem;
+    font-size:2.1rem;
     margin-bottom:40px;
-    color:#111;
 }
 
 /* BOOK GRID */
@@ -112,45 +116,56 @@ nav a:hover{
     gap:30px;
 }
 
-.card{
-    background:white;
-    padding:28px;
-    border-radius:12px;
+.book-card{
+    background:#fff;
+    border-radius:14px;
+    overflow:hidden;
     box-shadow:0 8px 25px rgba(0,0,0,0.05);
     transition:0.3s;
 }
 
-.card:hover{
-    transform:translateY(-4px);
+.book-card:hover{
+    transform:translateY(-5px);
 }
 
-.card h3{
+.book-card img{
+    width:100%;
+    height:380px;
+    object-fit:cover;
+}
+
+.book-content{
+    padding:22px;
+}
+
+.book-content h3{
     color:#8b0000;
-    margin-bottom:15px;
+    margin-bottom:12px;
+    font-size:1.2rem;
 }
 
-.card p{
-    margin-bottom:10px;
+.book-content p{
+    margin-bottom:8px;
 }
 
-/* CONTACT */
+/* INFO BOX */
 
-.contact-box{
-    background:white;
+.info-box{
+    background:#fff;
     padding:40px;
-    border-radius:12px;
-    max-width:850px;
-    margin:auto;
+    border-radius:14px;
     box-shadow:0 8px 25px rgba(0,0,0,0.05);
+    max-width:900px;
+    margin:auto;
     text-align:center;
 }
 
 /* FOOTER */
 
 footer{
+    background:#fff;
     text-align:center;
     padding:40px;
-    background:white;
     border-top:1px solid #ddd;
     color:#666;
 }
@@ -174,6 +189,9 @@ footer{
 
 <section class="hero" id="home">
 
+    <!-- your uploaded logo -->
+    <img src="logo.png" alt="অক্ষরযাত্রা প্রকাশন" class="logo">
+
     <h1>অক্ষরযাত্রা প্রকাশন</h1>
 
     <div class="tagline">
@@ -181,10 +199,10 @@ footer{
     </div>
 
     <p>
-        সাহিত্য শুধু মুদ্রিত কাগজ নয়—এ এক যাত্রা, স্মৃতি, ইতিহাস ও ভবিষ্যতের সেতুবন্ধন।
-        অক্ষরযাত্রা প্রকাশন বাংলা সাহিত্য, গবেষণা, লোকসংস্কৃতি, কবিতা, গল্প, উপন্যাস ও
-        মননশীল রচনার বিশ্বস্ত প্রকাশভূমি। আমরা বই প্রকাশ করি, পাঠকের সঙ্গে সম্পর্ক গড়ি,
-        আর অক্ষরের ভিতর দিয়ে নির্মাণ করি দীর্ঘ সাহিত্যিক সহযাত্রা।
+        সাহিত্য শুধু বই নয়—এ এক যাত্রা। স্মৃতি, ইতিহাস, সমাজ,
+        লোকসংস্কৃতি এবং ভবিষ্যতের সঙ্গে পাঠকের গভীর সংলাপ।
+        অক্ষরযাত্রা প্রকাশন বাংলা সাহিত্য, গবেষণা, কবিতা, উপন্যাস,
+        লোকঐতিহ্য ও মননশীল রচনার এক বিশ্বস্ত প্রকাশভূমি।
     </p>
 
     <a href="#books" class="btn">আমাদের বই দেখুন</a>
@@ -197,12 +215,14 @@ footer{
 
     <h2>আমাদের পরিচয়</h2>
 
-    <p style="max-width:850px; margin:auto; text-align:center;">
-        অক্ষরযাত্রা প্রকাশন নতুন ও প্রতিষ্ঠিত লেখকদের জন্য এক সৃজনশীল ও নির্ভরযোগ্য
-        প্রকাশনার পরিসর নির্মাণ করে। সাহিত্য, ইতিহাস, লোকসংস্কৃতি, গবেষণা ও সমকালীন
-        মননশীল রচনার প্রকাশে আমরা প্রতিশ্রুতিবদ্ধ। আমাদের লক্ষ্য শুধু বই প্রকাশ নয়,
-        পাঠক ও লেখকের মধ্যে দীর্ঘস্থায়ী সম্পর্ক তৈরি করা।
-    </p>
+    <div class="info-box">
+        <p>
+            নতুন ও প্রতিষ্ঠিত লেখকদের জন্য আমরা নির্মাণ করি একটি
+            সৃজনশীল ও নির্ভরযোগ্য প্রকাশনার পরিসর। আমাদের লক্ষ্য শুধু
+            বই প্রকাশ নয়—পাঠক, লেখক ও সমাজের মধ্যে দীর্ঘস্থায়ী
+            সাহিত্যিক সম্পর্ক গড়ে তোলা।
+        </p>
+    </div>
 
 </section>
 
@@ -214,45 +234,37 @@ footer{
 
     <div class="grid">
 
-        <div class="card">
-            <h3>সাবঅলটার্ন কলকাতার শিকড়সন্ধান</h3>
-            <p><strong>লেখক:</strong> অসিত দাস</p>
-            <p><strong>মূল্য:</strong> ₹৩০০</p>
-            <p>কলকাতার প্রান্তিক মানুষের জীবন, শ্রম, লোকসংস্কৃতি ও শহরের অন্তরাত্মার অনুসন্ধান।</p>
+        <!-- BOOK 1 -->
+        <div class="book-card">
+            <img src="book1.jpg" alt="বই ১">
+            <div class="book-content">
+                <h3>সাবঅলটার্ন কলকাতার শিকড়সন্ধান</h3>
+                <p><strong>লেখক:</strong> অসিত দাস</p>
+                <p><strong>মূল্য:</strong> ₹৩০০</p>
+                <p>প্রান্তিক কলকাতার ইতিহাস, শ্রম ও মানুষের গভীর পাঠ।</p>
+            </div>
         </div>
 
-        <div class="card">
-            <h3>রাঢ়ভূমি: লোকসংস্কৃতি ও আঞ্চলিক ইতিহাস</h3>
-            <p><strong>সম্পাদক:</strong> শান্তনু দলাই, মনোরঞ্জন ভৌমিক</p>
-            <p><strong>মূল্য:</strong> ₹৪০০</p>
-            <p>রাঢ় বাংলার ইতিহাস, লোকবিশ্বাস ও আঞ্চলিক সংস্কৃতির গভীর পাঠ।</p>
+        <!-- BOOK 2 -->
+        <div class="book-card">
+            <img src="book2.jpg" alt="বই ২">
+            <div class="book-content">
+                <h3>রাঢ়ভূমি: লোকসংস্কৃতি ও আঞ্চলিক ইতিহাস</h3>
+                <p><strong>সম্পাদক:</strong> শান্তনু দলাই, মনোরঞ্জন ভৌমিক</p>
+                <p><strong>মূল্য:</strong> ₹৪০০</p>
+                <p>রাঢ় বাংলার ইতিহাস, লোকবিশ্বাস ও সংস্কৃতির অনুসন্ধান।</p>
+            </div>
         </div>
 
-        <div class="card">
-            <h3>অদ্বৈত মল্লবর্মণ: জীবনের আখ্যান</h3>
-            <p><strong>লেখক:</strong> তপোধীর ভট্টাচার্য</p>
-            <p><strong>মূল্য:</strong> ₹২৫০</p>
-            <p>জীবন, সাহিত্য ও সময়ের ভেতর দিয়ে এক গভীর অনুসন্ধান।</p>
-        </div>
-
-        <div class="card">
-            <h3>গামছা চরিতকথা</h3>
-            <p><strong>লেখক:</strong> শফিকুল কবীর চন্দন</p>
-            <p><strong>মূল্য:</strong> ₹৪৩০</p>
-            <p>এক সাধারণ বস্তুকে কেন্দ্র করে সমাজ-সংস্কৃতির অসাধারণ পাঠ।</p>
-        </div>
-
-        <div class="card">
-            <h3>লোকদেবতা ত্রিনাথ</h3>
-            <p><strong>মূল্য:</strong> ₹২৫০</p>
-            <p>লোকবিশ্বাস, আঞ্চলিক ধর্মচর্চা ও সাংস্কৃতিক উত্তরাধিকারের অনুসন্ধান।</p>
-        </div>
-
-        <div class="card">
-            <h3>কবিতাসংগ্রহ ১</h3>
-            <p><strong>লেখক:</strong> বিশ্বজিৎ চট্টোপাধ্যায়</p>
-            <p><strong>মূল্য:</strong> ₹৪০০</p>
-            <p>সমকালীন বাংলা কবিতার স্বর, স্মৃতি ও অভিজ্ঞতার সংকলন।</p>
+        <!-- BOOK 3 -->
+        <div class="book-card">
+            <img src="book3.jpg" alt="বই ৩">
+            <div class="book-content">
+                <h3>অদ্বৈত মল্লবর্মণ: জীবনের আখ্যান</h3>
+                <p><strong>লেখক:</strong> তপোধীর ভট্টাচার্য</p>
+                <p><strong>মূল্য:</strong> ₹২৫০</p>
+                <p>জীবন, সাহিত্য ও সময়ের ভিতর দিয়ে গভীর যাত্রা।</p>
+            </div>
         </div>
 
     </div>
@@ -265,14 +277,13 @@ footer{
 
     <h2>প্রাপ্তিস্থান</h2>
 
-    <div class="contact-box">
-        <p>◑ ধ্যানবিন্দু — 8777476910</p>
+    <div class="info-box">
+        <p>◉ ধ্যানবিন্দু — 8777476910</p>
         <p>◉ লালন — 9330915587</p>
-        <p>◑ গীতা বুকস্টল — 9434626346</p>
+        <p>◉ গীতা বুকস্টল — 9434626346</p>
         <p>◉ পাপাঙ্গুলের ঘর — 6289066429</p>
-        <p>◑ প্লাটফর্ম — 7980038280</p>
-        <p>◉ কাউন্টার এরা — 9874717375</p>
-        <p>◑ বহুবচন — 7044428635</p>
+        <p>◉ প্লাটফর্ম — 7980038280</p>
+        <p>◉ বহুবচন — 7044428635</p>
         <p>◉ বইপিয়োন — boipeon.com</p>
     </div>
 
@@ -284,11 +295,14 @@ footer{
 
     <h2>পাণ্ডুলিপি জমা</h2>
 
-    <p style="max-width:800px; margin:auto; text-align:center;">
-        কবিতা, গল্প, উপন্যাস, গবেষণা, সমালোচনা, লোকসংস্কৃতি বা অন্য কোনো মননশীল রচনার
-        পাণ্ডুলিপি জমা দিতে চাইলে আমাদের সঙ্গে যোগাযোগ করুন। নির্বাচিত পাণ্ডুলিপির জন্য
-        সম্পাদকীয় বোর্ড সরাসরি যোগাযোগ করবে।
-    </p>
+    <div class="info-box">
+        <p>
+            কবিতা, গল্প, উপন্যাস, গবেষণা, সমালোচনা, লোকসংস্কৃতি
+            অথবা অন্য কোনো মননশীল রচনার পাণ্ডুলিপি জমা দিতে চাইলে
+            আমাদের সঙ্গে যোগাযোগ করুন। নির্বাচিত পাণ্ডুলিপির জন্য
+            সম্পাদকীয় বোর্ড সরাসরি যোগাযোগ করবে।
+        </p>
+    </div>
 
 </section>
 
@@ -298,7 +312,7 @@ footer{
 
     <h2>যোগাযোগ</h2>
 
-    <div class="contact-box">
+    <div class="info-box">
         <p><strong>Facebook:</strong> অক্ষরযাত্রা প্রকাশন</p>
         <p><strong>অবস্থান:</strong> Hind Motor</p>
         <p><strong>হোয়াটসঅ্যাপ অর্ডার:</strong> 9474907307</p>
