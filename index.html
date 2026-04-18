@@ -21,38 +21,58 @@ html{
 
 body{
     font-family:'Noto Serif Bengali', serif;
+    background:#f8f4ec;
     color:#222;
     line-height:1.8;
-    position:relative;
-    background:#f8f4ec;
     overflow-x:hidden;
+    position:relative;
 }
 
 /* BACKGROUND SLIDESHOW */
 
-body::before{
-    content:"";
+.bg-slideshow{
     position:fixed;
+    inset:0;
+    z-index:-2;
+    overflow:hidden;
+}
+
+.bg-slide{
+    position:absolute;
     inset:0;
     background-size:cover;
     background-position:center;
     background-repeat:no-repeat;
-    animation:bgSlide 40s infinite;
-    opacity:0.08;
-    z-index:-2;
+    opacity:0;
+    animation:bgFade 40s infinite;
+    filter:blur(2px);
 }
 
-@keyframes bgSlide{
-    0%   { background-image:url("book1.jpeg"); }
-    10%  { background-image:url("book5.jpeg"); }
-    20%  { background-image:url("book10.jpeg"); }
-    30%  { background-image:url("book15.jpeg"); }
-    40%  { background-image:url("book20.jpeg"); }
-    50%  { background-image:url("book25.jpeg"); }
-    60%  { background-image:url("book30.jpeg"); }
-    70%  { background-image:url("book35.jpeg"); }
-    80%  { background-image:url("book40.jpeg"); }
-    100% { background-image:url("book1.jpeg"); }
+.bg-slide:nth-child(1){background-image:url("book1.jpeg"); animation-delay:0s;}
+.bg-slide:nth-child(2){background-image:url("book5.jpeg"); animation-delay:5s;}
+.bg-slide:nth-child(3){background-image:url("book10.jpeg"); animation-delay:10s;}
+.bg-slide:nth-child(4){background-image:url("book15.jpeg"); animation-delay:15s;}
+.bg-slide:nth-child(5){background-image:url("book20.jpeg"); animation-delay:20s;}
+.bg-slide:nth-child(6){background-image:url("book25.jpeg"); animation-delay:25s;}
+.bg-slide:nth-child(7){background-image:url("book30.jpeg"); animation-delay:30s;}
+.bg-slide:nth-child(8){background-image:url("book35.jpeg"); animation-delay:35s;}
+
+@keyframes bgFade{
+    0%{opacity:0;}
+    8%{opacity:0.08;}
+    20%{opacity:0.08;}
+    28%{opacity:0;}
+    100%{opacity:0;}
+}
+
+/* OVERLAY */
+
+body::after{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:rgba(248,244,236,0.82);
+    z-index:-1;
 }
 
 /* NAVBAR */
@@ -63,7 +83,7 @@ nav{
     padding:18px 20px;
     display:flex;
     justify-content:center;
-    gap:32px;
+    gap:30px;
     flex-wrap:wrap;
     border-bottom:1px solid #ddd;
     position:sticky;
@@ -86,8 +106,7 @@ nav a:hover{
 
 .hero{
     text-align:center;
-    padding:90px 20px 60px;
-    background:rgba(255,253,248,0.85);
+    padding:90px 20px 50px;
 }
 
 .logo{
@@ -129,57 +148,60 @@ nav a:hover{
     background:#5f0000;
 }
 
-/* FRONT SWIPEABLE SLIDESHOW */
+/* FRONT AUTO + SWIPEABLE SLIDER */
 
-.featured-slider{
-    max-width:1100px;
-    margin:60px auto 20px;
+.featured{
+    max-width:900px;
+    margin:60px auto;
     padding:0 20px;
 }
 
-.featured-slider h2{
+.featured h2{
     text-align:center;
     margin-bottom:30px;
     font-size:2rem;
 }
 
-.swiper{
+.slider-wrap{
+    position:relative;
+    width:100%;
+    max-width:420px;
+    margin:auto;
+}
+
+.slider{
     display:flex;
-    gap:20px;
     overflow-x:auto;
     scroll-snap-type:x mandatory;
     scroll-behavior:smooth;
-    padding-bottom:20px;
+    border-radius:18px;
+    scrollbar-width:none;
+    -ms-overflow-style:none;
 }
 
-.swiper::-webkit-scrollbar{
-    height:8px;
-}
-
-.swiper::-webkit-scrollbar-thumb{
-    background:#bbb;
-    border-radius:20px;
+.slider::-webkit-scrollbar{
+    display:none;
 }
 
 .slide{
-    min-width:280px;
-    flex:0 0 auto;
+    min-width:100%;
     scroll-snap-align:center;
+    flex-shrink:0;
     background:white;
-    border-radius:16px;
-    padding:14px;
-    box-shadow:0 8px 25px rgba(0,0,0,0.06);
+    padding:18px;
+    border-radius:18px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.08);
 }
 
 .slide img{
     width:100%;
-    height:420px;
+    height:520px;
     object-fit:contain;
     border-radius:12px;
     background:#fff;
 }
 
-/* SECTION */
+/* ALL BOOK GRID */
 
 .section{
     max-width:1200px;
@@ -193,8 +215,6 @@ nav a:hover{
     margin-bottom:40px;
 }
 
-/* ALL BOOK GRID */
-
 .grid{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
@@ -203,14 +223,9 @@ nav a:hover{
 
 .book{
     background:rgba(255,255,255,0.95);
-    border-radius:14px;
     padding:12px;
+    border-radius:14px;
     box-shadow:0 6px 18px rgba(0,0,0,0.05);
-    transition:.3s;
-}
-
-.book:hover{
-    transform:translateY(-4px);
 }
 
 .book img{
@@ -239,30 +254,44 @@ footer{
     background:rgba(255,255,255,0.95);
     text-align:center;
     padding:40px;
+    margin-top:80px;
     border-top:1px solid #ddd;
     color:#666;
-    margin-top:80px;
 }
 
 /* MOBILE */
 
 @media(max-width:768px){
-    .hero h1{
-        font-size:2.3rem;
-    }
 
-    .slide{
-        min-width:220px;
+    .hero h1{
+        font-size:2.2rem;
     }
 
     .slide img{
-        height:320px;
+        height:380px;
+    }
+
+    nav{
+        gap:18px;
     }
 }
 </style>
 </head>
 
 <body>
+
+<!-- BACKGROUND SLIDESHOW -->
+
+<div class="bg-slideshow">
+    <div class="bg-slide"></div>
+    <div class="bg-slide"></div>
+    <div class="bg-slide"></div>
+    <div class="bg-slide"></div>
+    <div class="bg-slide"></div>
+    <div class="bg-slide"></div>
+    <div class="bg-slide"></div>
+    <div class="bg-slide"></div>
+</div>
 
 <!-- NAVBAR -->
 
@@ -299,30 +328,47 @@ footer{
 
 </section>
 
-<!-- FRONT SWIPEABLE FEATURED SLIDER -->
+<!-- AUTO + SWIPEABLE FRONT SLIDER -->
 
-<section class="featured-slider" id="featured">
+<section class="featured" id="featured">
 
     <h2>নির্বাচিত প্রচ্ছদ</h2>
 
-    <div class="swiper">
+    <div class="slider-wrap">
 
-        <div class="slide"><img src="book1.jpeg" alt=""></div>
-        <div class="slide"><img src="book2.jpeg" alt=""></div>
-        <div class="slide"><img src="book3.jpeg" alt=""></div>
-        <div class="slide"><img src="book4.jpeg" alt=""></div>
-        <div class="slide"><img src="book5.jpeg" alt=""></div>
-        <div class="slide"><img src="book6.jpeg" alt=""></div>
-        <div class="slide"><img src="book7.jpeg" alt=""></div>
-        <div class="slide"><img src="book8.jpeg" alt=""></div>
-        <div class="slide"><img src="book9.jpeg" alt=""></div>
-        <div class="slide"><img src="book10.jpeg" alt=""></div>
+        <div class="slider" id="mainSlider">
+
+            <div class="slide">
+                <img src="book1.jpeg" alt="">
+            </div>
+
+            <div class="slide">
+                <img src="book2.jpeg" alt="">
+            </div>
+
+            <div class="slide">
+                <img src="book3.jpeg" alt="">
+            </div>
+
+            <div class="slide">
+                <img src="book4.jpeg" alt="">
+            </div>
+
+            <div class="slide">
+                <img src="book5.jpeg" alt="">
+            </div>
+
+            <div class="slide">
+                <img src="book6.jpeg" alt="">
+            </div>
+
+        </div>
 
     </div>
 
 </section>
 
-<!-- ALL 40 BOOK COVERS -->
+<!-- ALL BOOKS -->
 
 <section class="section" id="books">
 
@@ -330,49 +376,46 @@ footer{
 
     <div class="grid">
 
-        <div class="book"><img src="book1.jpeg" alt=""></div>
-        <div class="book"><img src="book2.jpeg" alt=""></div>
-        <div class="book"><img src="book3.jpeg" alt=""></div>
-        <div class="book"><img src="book4.jpeg" alt=""></div>
-        <div class="book"><img src="book5.jpeg" alt=""></div>
-        <div class="book"><img src="book6.jpeg" alt=""></div>
-        <div class="book"><img src="book7.jpeg" alt=""></div>
-        <div class="book"><img src="book8.jpeg" alt=""></div>
-        <div class="book"><img src="book9.jpeg" alt=""></div>
-        <div class="book"><img src="book10.jpeg" alt=""></div>
-
-        <div class="book"><img src="book11.jpeg" alt=""></div>
-        <div class="book"><img src="book12.jpeg" alt=""></div>
-        <div class="book"><img src="book13.jpeg" alt=""></div>
-        <div class="book"><img src="book14.jpeg" alt=""></div>
-        <div class="book"><img src="book15.jpeg" alt=""></div>
-        <div class="book"><img src="book16.jpeg" alt=""></div>
-        <div class="book"><img src="book17.jpeg" alt=""></div>
-        <div class="book"><img src="book18.jpeg" alt=""></div>
-        <div class="book"><img src="book19.jpeg" alt=""></div>
-        <div class="book"><img src="book20.jpeg" alt=""></div>
-
-        <div class="book"><img src="book21.jpeg" alt=""></div>
-        <div class="book"><img src="book22.jpeg" alt=""></div>
-        <div class="book"><img src="book23.jpeg" alt=""></div>
-        <div class="book"><img src="book24.jpeg" alt=""></div>
-        <div class="book"><img src="book25.jpeg" alt=""></div>
-        <div class="book"><img src="book26.jpeg" alt=""></div>
-        <div class="book"><img src="book27.jpeg" alt=""></div>
-        <div class="book"><img src="book28.jpeg" alt=""></div>
-        <div class="book"><img src="book29.jpeg" alt=""></div>
-        <div class="book"><img src="book30.jpeg" alt=""></div>
-
-        <div class="book"><img src="book31.jpeg" alt=""></div>
-        <div class="book"><img src="book32.jpeg" alt=""></div>
-        <div class="book"><img src="book33.jpeg" alt=""></div>
-        <div class="book"><img src="book34.jpeg" alt=""></div>
-        <div class="book"><img src="book35.jpeg" alt=""></div>
-        <div class="book"><img src="book36.jpeg" alt=""></div>
-        <div class="book"><img src="book37.jpeg" alt=""></div>
-        <div class="book"><img src="book38.jpeg" alt=""></div>
-        <div class="book"><img src="book39.jpeg" alt=""></div>
-        <div class="book"><img src="book40.jpeg" alt=""></div>
+        <div class="book"><img src="book1.jpeg"></div>
+        <div class="book"><img src="book2.jpeg"></div>
+        <div class="book"><img src="book3.jpeg"></div>
+        <div class="book"><img src="book4.jpeg"></div>
+        <div class="book"><img src="book5.jpeg"></div>
+        <div class="book"><img src="book6.jpeg"></div>
+        <div class="book"><img src="book7.jpeg"></div>
+        <div class="book"><img src="book8.jpeg"></div>
+        <div class="book"><img src="book9.jpeg"></div>
+        <div class="book"><img src="book10.jpeg"></div>
+        <div class="book"><img src="book11.jpeg"></div>
+        <div class="book"><img src="book12.jpeg"></div>
+        <div class="book"><img src="book13.jpeg"></div>
+        <div class="book"><img src="book14.jpeg"></div>
+        <div class="book"><img src="book15.jpeg"></div>
+        <div class="book"><img src="book16.jpeg"></div>
+        <div class="book"><img src="book17.jpeg"></div>
+        <div class="book"><img src="book18.jpeg"></div>
+        <div class="book"><img src="book19.jpeg"></div>
+        <div class="book"><img src="book20.jpeg"></div>
+        <div class="book"><img src="book21.jpeg"></div>
+        <div class="book"><img src="book22.jpeg"></div>
+        <div class="book"><img src="book23.jpeg"></div>
+        <div class="book"><img src="book24.jpeg"></div>
+        <div class="book"><img src="book25.jpeg"></div>
+        <div class="book"><img src="book26.jpeg"></div>
+        <div class="book"><img src="book27.jpeg"></div>
+        <div class="book"><img src="book28.jpeg"></div>
+        <div class="book"><img src="book29.jpeg"></div>
+        <div class="book"><img src="book30.jpeg"></div>
+        <div class="book"><img src="book31.jpeg"></div>
+        <div class="book"><img src="book32.jpeg"></div>
+        <div class="book"><img src="book33.jpeg"></div>
+        <div class="book"><img src="book34.jpeg"></div>
+        <div class="book"><img src="book35.jpeg"></div>
+        <div class="book"><img src="book36.jpeg"></div>
+        <div class="book"><img src="book37.jpeg"></div>
+        <div class="book"><img src="book38.jpeg"></div>
+        <div class="book"><img src="book39.jpeg"></div>
+        <div class="book"><img src="book40.jpeg"></div>
 
     </div>
 
@@ -406,7 +449,6 @@ footer{
         <p><strong>Facebook:</strong> অক্ষরযাত্রা প্রকাশন</p>
         <p><strong>হোয়াটসঅ্যাপ অর্ডার:</strong> 9474907307</p>
         <p><strong>বিশেষ অনুরোধ:</strong> ফোন নয়, হোয়াটসঅ্যাপ করুন</p>
-        <p><strong>কলেজ স্ট্রিট ও অনলাইন ডেলিভারি উপলব্ধ</strong></p>
     </div>
 
 </section>
@@ -414,6 +456,27 @@ footer{
 <footer>
     © 2026 অক্ষরযাত্রা প্রকাশন | সকল স্বত্ব সংরক্ষিত
 </footer>
+
+<script>
+const slider = document.getElementById("mainSlider");
+let index = 0;
+
+function autoSlide() {
+    const slides = slider.querySelectorAll(".slide");
+    index++;
+
+    if(index >= slides.length){
+        index = 0;
+    }
+
+    slider.scrollTo({
+        left: slider.clientWidth * index,
+        behavior: "smooth"
+    });
+}
+
+setInterval(autoSlide, 3500);
+</script>
 
 </body>
 </html>
